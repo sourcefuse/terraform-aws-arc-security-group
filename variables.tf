@@ -44,7 +44,7 @@ variable "egress_rules" {
 
 
 variable "tags" {
-  description = "A map of tags to assign to the DB Cluster."
+  description = "Tags for Security Group"
   type        = map(string)
   default     = {}
 }
