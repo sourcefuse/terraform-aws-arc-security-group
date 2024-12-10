@@ -73,8 +73,17 @@ For basic usage, see the [example](https://github.com/sourcefuse/terraform-aws-a
 
 This example will create:
 
-1. Security Group Example
-This example demonstrates deploying a single RDS instance using the module, configuring an Amazon RDS database with basic settings like instance class, storage, and connectivity. It showcases options for database engine, encryption, and CloudWatch monitoring for a standalone RDS database. Ideal for simple, production-ready RDS setups.
+This Terraform module creates a security group with the following configurations:
+
+Ingress Rules:
+
+- VPC Traffic: Allows all TCP traffic within the VPC (0-65535) based on the VPC CIDR block.
+- Self-Traffic: Allows all TCP traffic (0-65535) within the same security group for self-referencing communication.
+- Source Security Group: Permits TCP traffic (0-65535) from a specific source security group.
+
+Egress Rules:
+
+- Outbound Traffic: Allows unrestricted outbound traffic (0.0.0.0/0) for all protocols and ports.
 
 ### Tips and Recommendations
 
@@ -90,7 +99,7 @@ If you encounter a bug or issue, please report it on the [GitHub repository](htt
 
 ### AWS VPC
 
-Understand the security considerations related to SEcurity Group
+Understand the security considerations related to Security Group
 
 ## Contributing and Community Support
 
