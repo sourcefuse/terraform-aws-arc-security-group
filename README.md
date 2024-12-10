@@ -1,18 +1,21 @@
-# terraform-aws-module-template
+![Module Structure](./static/banner.png)
+# [terraform-aws-arc-security-group](https://github.com/sourcefuse/terraform-aws-arc-security-group)
+
+<a href="https://github.com/sourcefuse/terraform-aws-arc-security-group/releases/latest"><img src="https://img.shields.io/github/release/sourcefuse/terraform-aws-arc-security-group.svg?style=for-the-badge" alt="Latest Release"/></a> <a href="https://github.com/sourcefuse/terraform-aws-arc-security-group/commits"><img src="https://img.shields.io/github/last-commit/sourcefuse/terraform-aws-arc-security-group.svg?style=for-the-badge" alt="Last Updated"/></a> ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=sourcefuse_terraform-aws-arc-security-group&token=0e57ba3902cccbb2b9c0585a9859bccbf2d00e3c)](https://sonarcloud.io/summary/new_code?id=sourcefuse_terraform-aws-arc-security-group)
+
+[![Known Vulnerabilities](https://github.com/sourcefuse/terraform-aws-arc-security-group/actions/workflows/snyk.yaml/badge.svg)](https://github.com/sourcefuse/terraform-aws-arc-security-group/actions/workflows/snyk.yaml)
 
 ## Overview
 
-SourceFuse AWS Reference Architecture (ARC) Terraform module for managing _________.
+The SourceFuse AWS Reference Architecture (ARC) Terraform module for creating and managing AWS security groups with customizable rules. It simplifies defining inbound and outbound rules for specific protocols, ports, and CIDR ranges, ensuring secure and efficient network traffic control in your infrastructure.
 
-## Usage
+For more information about this repository and its usage, please see [Terraform AWS ARC DB Usage Guide](https://github.com/sourcefuse/terraform-aws-arc-security-group/blob/main/docs/module-usage-guide/README.md).
 
-To see a full example, check out the [main.tf](./example/main.tf) file in the example folder.  
+## Module Usage
 
-```hcl
-module "this" {
-  source = "git::https://github.com/sourcefuse/terraform-aws-refarch-<module_name>"
-}
-```
+To see a full example, check out the [main.tf](https://github.com/sourcefuse/terraform-aws-arc-security-group/blob/main/example/main.tf) file in the example folder.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
