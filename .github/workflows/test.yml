@@ -1,11 +1,11 @@
 ---
 name: Test
 
-on:                 # yamllint disable-line rule:truthy
+on:  # yamllint disable-line rule:truthy
   push:
     branches:
-      - "**"        # matches every branch
-      - "!main"     # excludes main
+      - '**'     # matches every branch
+      - '!main'  # excludes main
   pull_request:
     branches:
       - main
@@ -13,7 +13,7 @@ on:                 # yamllint disable-line rule:truthy
 jobs:
   tflint:
     runs-on:
-      - arc
+      - ubuntu-latest
     name: tflint
     steps:
       - uses: actions/checkout@master
