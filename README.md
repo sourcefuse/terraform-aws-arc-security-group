@@ -7,15 +7,77 @@
 
 [![Known Vulnerabilities](https://github.com/sourcefuse/terraform-aws-arc-security-group/actions/workflows/snyk.yaml/badge.svg)](https://github.com/sourcefuse/terraform-aws-arc-security-group/actions/workflows/snyk.yaml)
 
-## Overview
+## Introduction
 
 The SourceFuse AWS Reference Architecture (ARC) Terraform module for creating and managing AWS security groups with customizable rules. It simplifies defining inbound and outbound rules for specific protocols, ports, and CIDR ranges, ensuring secure and efficient network traffic control in your infrastructure.
 
-For more information about this repository and its usage, please see [Terraform AWS ARC DB Usage Guide](https://github.com/sourcefuse/terraform-aws-arc-security-group/blob/main/docs/module-usage-guide/README.md).
+For more information about this repository and its usage, please see [Terraform AWS ARC Security Group Module Usage Guide](docs/module-usage-guide/README.md).
 
-## Module Usage
+### Prerequisites
+Before using this module, ensure you have the following:
 
-To see a full example, check out the [main.tf](https://github.com/sourcefuse/terraform-aws-arc-security-group/blob/main/example/main.tf) file in the example folder.
+- AWS credentials configured.
+- Terraform installed.
+- A working knowledge of Terraform.
+
+## Usage
+See the `examples` folder for a complete example.
+
+```hcl
+
+locals {
+  security_group_data = {
+    create      = true
+    description = "Security Group for Loadbalancer"
+
+    ingress_rules = [
+      {
+        description = "Allow VPC traffic"
+        cidr_block  = data.aws_vpc.this.cidr_block
+        from_port   = 0
+        ip_protocol = "tcp"
+        to_port     = 65535
+      },
+      {
+        description = "Allow traffic from self"
+        self        = true
+        from_port   = 0
+        ip_protocol = "tcp"
+        to_port     = 65535
+      },
+      {
+        description              = "Allow traffic from security group"
+        source_security_group_id = data.aws_security_group.default.id
+        from_port                = 0
+        ip_protocol              = "tcp"
+        to_port                  = 65535
+      }
+    ]
+
+    egress_rules = [
+      {
+        description = "Allow all outbound traffic"
+        cidr_block  = "0.0.0.0/0"
+        from_port   = -1
+        ip_protocol = "-1"
+        to_port     = -1
+      }
+    ]
+  }
+}
+
+module "arc_security_group" {
+  source  = "sourcefuse/arc-security-group/aws"
+  version = "0.0.1"
+
+  name          = "${var.namespace}-${var.environment}-sg"
+  vpc_id        = data.aws_vpc.this.id
+  ingress_rules = local.security_group_data.ingress_rules
+  egress_rules  = local.security_group_data.egress_rules
+
+  tags = module.tags.tags
+}
+```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -58,7 +120,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_id"></a> [id](#output\_id) | Security Groupo ID |
+| <a name="output_id"></a> [id](#output\_id) | Security Group ID |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Versioning  

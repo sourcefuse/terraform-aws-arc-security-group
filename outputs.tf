@@ -1,4 +1,4 @@
 output "id" {
-  description = "Security Groupo ID"
+  description = "Security Group ID"
   value       = aws_security_group.this.id
 }
