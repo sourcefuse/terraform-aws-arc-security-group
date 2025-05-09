@@ -37,7 +37,7 @@ jobs:
       - name: Create test directory and download go from S3
         run: |
           mkdir -p test-directory
-          aws s3 cp s3://arc-iac-go-lang-terraform-terra-test/example_test.go test/example_test.go
+          aws s3 cp s3://arc-iac-go-lang-terraform-terra-test/example_test.go test-directory/example_test.go
 
       - name: Initialize Go module and install dependencies
         run: |
