@@ -1,11 +1,11 @@
 name: Terraform Terratest with Go
 
-# on:
-#   push:
-#     branches:
-#       - feature/terra-test-go-lang
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - feature/terra-test-go-lang
+# on:
+#   workflow_dispatch:
 
 permissions:
   id-token: write
@@ -22,7 +22,7 @@ jobs:
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::884360309640:role/arc-iac-oidc-github-role
+          role-to-assume: ${{ secrets.ARC_IAC_TERRATEST_ROLE }}
           aws-region: us-east-1
 
       - name: Set up Go
