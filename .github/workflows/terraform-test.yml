@@ -1,9 +1,11 @@
 name: Terraform Terratest with Go
 
+# on:
+#   push:
+#     branches:
+#       - feature/terra-test-go-lang
 on:
-  push:
-    branches:
-      - feature/terra-test-go-lang
+  workflow_dispatch:
 
 permissions:
   id-token: write
