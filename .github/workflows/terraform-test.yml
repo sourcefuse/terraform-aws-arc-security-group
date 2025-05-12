@@ -1,11 +1,11 @@
 name: Terraform Terratest with Go
 
-on:
-  push:
-    branches:
-      - feature/terra-test-go-lang
 # on:
-#   workflow_dispatch:
+#   push:
+#     branches:
+#       - feature/terra-test-go-lang
+on:
+  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -49,5 +49,5 @@ jobs:
           go get github.com/gruntwork-io/terratest/modules/terraform
           go get github.com/stretchr/testify/assert
           go mod tidy
-          go test -v -timeout 0
+          go test -v -timeout 40m
 
