@@ -1,16 +1,17 @@
 name: Terraform Terratest with Go
 
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - feature/terra-test-go-lang
+# on:
+#   push:
+#     branches:
+#       - feature/terra-test-go-lang
 # on:
 #   workflow_dispatch:
 #     inputs:
 #       pr_number:
 #         description: 'Pull Request Number'
 #         required: true
+
+on: workflow_dispatch
 
 permissions:
   id-token: write
@@ -23,8 +24,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          ref: refs/pull/${{ github.event.inputs.pr_number }}/head
+        # with:
+        #   ref: refs/pull/${{ github.event.inputs.pr_number }}/head
 
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v2
