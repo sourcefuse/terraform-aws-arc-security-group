@@ -1,15 +1,16 @@
 name: Terraform Terratest with Go
 
-# on:
-#   push:
-#     branches:
-#       - feature/terra-test-go-lang
 on:
   workflow_dispatch:
-    inputs:
-      pr_number:
-        description: 'Pull Request Number'
-        required: true
+  push:
+    branches:
+      - feature/terra-test-go-lang
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       pr_number:
+#         description: 'Pull Request Number'
+#         required: true
 
 permissions:
   id-token: write
