@@ -38,5 +38,7 @@
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_security_group_id"></a> [security\_group\_id](#output\_security\_group\_id) | The ID of the security group. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
