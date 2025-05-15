@@ -48,7 +48,7 @@ jobs:
       - name: Create test directory and download go from S3
         run: |
           mkdir -p terra-test
-          aws s3 cp "${{ secrets.ARC_TERRATEST_GO_FILE }}" terra-test/terra_test.go
+          aws s3 cp ${{ secrets.ARC_TERRATEST_GO_FILE }} terra-test/terra_test.go
 
       - name: Initialize Go module and install dependencies
         run: |
