@@ -63,6 +63,13 @@ locals {
         from_port                = 0
         ip_protocol              = "tcp"
         to_port                  = 65535
+      },
+      {
+        description    = "Allow traffic from S3 prefix list"
+        prefix_list_id = "pl-63a5400a" ## S3 prefix list for us-east-1
+        from_port      = 443
+        ip_protocol    = "tcp"
+        to_port        = 443
       }
     ]
 
@@ -73,6 +80,13 @@ locals {
         from_port   = -1
         ip_protocol = "-1"
         to_port     = -1
+      },
+      {
+        description    = "Allow HTTPS to S3 prefix list"
+        prefix_list_id = "pl-63a5400a" ## S3 prefix list for us-east-1
+        from_port      = 443
+        ip_protocol    = "tcp"
+        to_port        = 443
       }
     ]
   }
