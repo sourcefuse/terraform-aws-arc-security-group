@@ -18,11 +18,13 @@ resource "aws_vpc_security_group_egress_rule" "this" {
   security_group_id            = aws_security_group.this.id
   description                  = each.value.description
   cidr_ipv4                    = each.value.cidr_block
+  cidr_ipv6                    = each.value.cidr_ipv6
   referenced_security_group_id = each.value.destination_security_group_id
   prefix_list_id               = each.value.prefix_list_id
   from_port                    = each.value.from_port
   ip_protocol                  = each.value.ip_protocol
   to_port                      = each.value.to_port
+  tags                         = each.value.tags
 
   depends_on = [aws_security_group.this]
 }
@@ -35,10 +37,13 @@ resource "aws_vpc_security_group_ingress_rule" "this" {
   security_group_id            = aws_security_group.this.id
   description                  = each.value.description
   cidr_ipv4                    = each.value.cidr_block
+  cidr_ipv6                    = each.value.cidr_ipv6
   referenced_security_group_id = each.value.self ? aws_security_group.this.id : each.value.source_security_group_id
+  prefix_list_id               = each.value.prefix_list_id
   from_port                    = each.value.from_port
   ip_protocol                  = each.value.ip_protocol
   to_port                      = each.value.to_port
+  tags                         = each.value.tags
 
   depends_on = [aws_security_group.this]
 }
