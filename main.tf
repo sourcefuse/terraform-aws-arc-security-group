@@ -12,7 +12,8 @@ resource "aws_security_group" "this" {
 
 resource "aws_vpc_security_group_egress_rule" "this" {
   for_each = {
-    for idx, rule in var.egress_rules : idx => rule
+    for idx, rule in var.egress_rules :
+    "${coalesce(rule.cidr_block, rule.destination_security_group_id, rule.prefix_list_id, "unknown")}-${rule.from_port}-${rule.to_port}-${rule.ip_protocol}" => rule
   }
 
   security_group_id            = aws_security_group.this.id
@@ -31,9 +32,9 @@ resource "aws_vpc_security_group_egress_rule" "this" {
 
 resource "aws_vpc_security_group_ingress_rule" "this" {
   for_each = {
-    for idx, rule in var.ingress_rules : idx => rule
+    for idx, rule in var.ingress_rules :
+    "${coalesce(rule.cidr_block, rule.source_security_group_id, rule.prefix_list_id, lookup(rule, "self", false) ? "self" : "unknown")}-${rule.from_port}-${rule.to_port}-${rule.ip_protocol}" => rule
   }
-
   security_group_id            = aws_security_group.this.id
   description                  = each.value.description
   cidr_ipv4                    = each.value.cidr_block
