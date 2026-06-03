@@ -153,6 +153,7 @@ No modules.
 | <a name="output_id"></a> [id](#output\_id) | Security Group ID |
 | <a name="output_ingress_rule_arns"></a> [ingress\_rule\_arns](#output\_ingress\_rule\_arns) | ARNs of the ingress rules |
 | <a name="output_ingress_rule_ids"></a> [ingress\_rule\_ids](#output\_ingress\_rule\_ids) | IDs of the ingress rules |
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Versioning  
