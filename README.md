@@ -17,6 +17,9 @@
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=sourcefuse_terraform-aws-arc-security-group&token=0e57ba3902cccbb2b9c0585a9859bccbf2d00e3c)](https://sonarcloud.io/summary/new_code?id=sourcefuse_terraform-aws-arc-security-group)
 
+> [!TIP]
+> 🤖 **New:** Use this module with AI assistants via the [ARC IaC MCP Server](https://github.com/sourcefuse/arc-iac-mcp) — search, scaffold, and security-scan ARC modules from natural language. [Quick setup ↓](#ai-assistant-integration-arc-iac-mcp)
+
 ## Overview
 
 Creates AWS security groups with configurable ingress and egress rules for controlling network traffic.
